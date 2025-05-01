@@ -152,8 +152,44 @@ pm2 startup
 pm2 save
 ```
 
-### 10. Additional Notes 📦
+### 10. RDS connectivity 📦
 - Ensure your `MySQL database is accessible` from your EC2 instance (especially if using AWS RDS).
+# Mysql Client Install :
+
+  sudo apt update
+  sudo apt install mysql-client -y
+
+# Connect to RDS
+  mysql -h <RDS endpint>  -u <dbusername> -p
+
+✅ Basic MySQL Verification Commands
+# Show current user
+  SELECT USER(), CURRENT_USER();
+
+# List all databases
+  SHOW DATABASES;
+  
+# Use a specific database
+  USE your_database_name;
+  
+# List all tables in the selected database
+  SHOW TABLES;
+# Check RDS version and info
+  SELECT VERSION();
+  SELECT @@hostname, @@port, @@version_comment;
+  
+# To see the data in a users table, you'll typically use an SQL query 
+  SELECT * FROM users;
+
+# To edit the data in your users table in MySQL, you can use the UPDATE statement.
+For example, if you want to update the name or email for the user with id = 1, use this:
+  
+ UPDATE users
+ SET name = 'Amir H.', email = 'amir.h@example.com'
+ WHERE id = 1;
+
+
+### 11. Additional Notes 📦
 - You can use `Nginx` as a reverse proxy for production deployment.
 - For better performance, build the frontend for production:
 ```bash
@@ -170,5 +206,6 @@ MIT License – see `LICENSE` for details.
 ### Let me know if you'd like a version of this README with commands for setting up Nginx, domain SSL, or Docker support.
 
 ## Happy Coding! 🎉
-### Modify Author: [Mahadi Hassan Razib]
+### Original Author: [Mahadi Hassan Razib]
+### Reviewed: [Amir Hossain]
 #### Project Credit: [`Mushfiqur Rahman`] (https://github.com/nia3zzz)
