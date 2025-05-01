@@ -1,5 +1,7 @@
 # Three-Tier MERN Application with React.js, Node.js & MySQL
 
+<img src="./zimages/mern.jpg" alt="MERN Stack" width="100%" height="100%">
+
 ## This repository contains a complete three-tier web application built using:
 
 - `Frontend` : React.js with Vite, axios
@@ -24,6 +26,9 @@ Before proceeding, ensure the following are available:
 sudo apt update && sudo apt upgrade -y
 ```
 ### 2. Install Node.js and npm
+
+<img src="./zimages/node.png" alt="MERN Stack" width="25%" height="100%">
+
 ```bash
 # Add the NodeSource repository for Node.js:
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
@@ -38,6 +43,12 @@ node -v
 npm -v
 ```
 ### 3. Install PM2
+---
+<img src="./zimages/pm2-v4.png" alt="MERN Stack" width="100%" height="100%">
+
+
+
+
 ```bash
 # Install PM2 globally:
 sudo npm install pm2@latest -g
