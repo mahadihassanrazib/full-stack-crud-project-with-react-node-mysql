@@ -157,3 +157,7 @@ npm run build
 MIT License – see `LICENSE` for details.
 
 ### Let me know if you'd like a version of this README with commands for setting up Nginx, domain SSL, or Docker support.
+
+## Happy Coding! 🎉
+### Modify Author: [Mahadi Hassan Razib]
+#### Project Credit: [`Mushfiqur Rahman`] (https://github.com/nia3zzz)
