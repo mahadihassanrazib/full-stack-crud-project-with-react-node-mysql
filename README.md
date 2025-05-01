@@ -153,9 +153,10 @@ pm2 save
 ```
 
 ### 10. RDS connectivity 📦
+
 - Ensure your `MySQL database is accessible` from your EC2 instance (especially if using AWS RDS).
 ### Mysql Client Install :
-
+  ```bash
   sudo apt update
   sudo apt install mysql-client -y
 
