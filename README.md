@@ -163,7 +163,7 @@ pm2 save
 ### Connect to RDS
   mysql -h <RDS endpint>  -u <dbusername> -p
 
-✅ Basic MySQL Verification Commands
+### ✅ Basic MySQL Verification Commands
 ## Show current user
   SELECT USER(), CURRENT_USER();
 
