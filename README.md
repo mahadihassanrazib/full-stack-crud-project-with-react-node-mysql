@@ -154,34 +154,34 @@ pm2 save
 
 ### 10. RDS connectivity 📦
 - Ensure your `MySQL database is accessible` from your EC2 instance (especially if using AWS RDS).
-# Mysql Client Install :
+### Mysql Client Install :
 
   sudo apt update
   sudo apt install mysql-client -y
 
-# Connect to RDS
+### Connect to RDS
   mysql -h <RDS endpint>  -u <dbusername> -p
 
 ✅ Basic MySQL Verification Commands
-# Show current user
+## Show current user
   SELECT USER(), CURRENT_USER();
 
-# List all databases
+## List all databases
   SHOW DATABASES;
   
-# Use a specific database
+## Use a specific database
   USE your_database_name;
   
-# List all tables in the selected database
+## List all tables in the selected database
   SHOW TABLES;
-# Check RDS version and info
+## Check RDS version and info
   SELECT VERSION();
   SELECT @@hostname, @@port, @@version_comment;
   
-# To see the data in a users table, you'll typically use an SQL query 
+## To see the data in a users table, you'll typically use an SQL query 
   SELECT * FROM users;
 
-# To edit the data in your users table in MySQL, you can use the UPDATE statement.
+## To edit the data in your users table in MySQL, you can use the UPDATE statement.
 For example, if you want to update the name or email for the user with id = 1, use this:
   
  UPDATE users
