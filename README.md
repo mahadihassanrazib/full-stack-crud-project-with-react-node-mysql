@@ -209,5 +209,5 @@ MIT License – see `LICENSE` for details.
 
 ## Happy Coding! 🎉
 ### Original Author: [Mahadi Hassan Razib]
-### Reviewed: [Amir Hossain]
+### Reviewed & RDS part updated by: [Amir Hossain]
 #### Project Credit: [`Mushfiqur Rahman`] (https://github.com/nia3zzz)
