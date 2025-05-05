@@ -17,6 +17,21 @@ services:
     networks:
       - todo_network
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest                 # Use the latest phpMyAdmin image
+    container_name: phpmyadmin_container                # Name the phpMyAdmin container
+    restart: always                                     # Restart the container automatically if it crashes
+    environment:
+      PMA_HOST: mysql                                   # Hostname of the MySQL server (matches the `mysql` service)
+      PMA_USER: root                                    # MySQL root user for phpMyAdmin
+      PMA_PASSWORD: rootpassword                       # Password for the MySQL root user
+    ports:
+      - "8085:80"                                       # Expose phpMyAdmin on port 8080
+    depends_on:
+      - mysql                                           # Ensure that the MySQL container starts before phpMyAdmin
+    networks:
+      - todo_network
+
 volumes:                                              # Define volume for data persistence
   db_data:
 
