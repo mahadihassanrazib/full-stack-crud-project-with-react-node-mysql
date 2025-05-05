@@ -152,10 +152,131 @@ pm2 startup
 pm2 save
 ```
 
-### 10. RDS connectivity 📦
+### 10. Run MySQL Database Locally (with docker compose file) 🗄️
+- Requirements:
+  - Docker and Docker Compose installed on your server.
+  - Docker installed on your local machine (if running locally).
+- If you don't have Docker installed, follow the instructions below.
+
+#### Install Docker and Docker Compose if not already installed:
+```bash
+# Install using the apt repository (Recommended): execute one by one
+
+# Add Docker's official GPG key:
+sudo apt-get update
+
+sudo apt-get install ca-certificates curl
+
+sudo install -m 0755 -d /etc/apt/keyrings
+
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
+```
+
+#### Install Docker Engine, containerd, and Docker Compose:
+```bash
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+
+```
+
+#### Linux post-installation steps for Docker Engine
+```bash
+# Create the docker group.
+sudo groupadd docker
+
+# Add your user to the docker group.
+sudo usermod -aG docker $USER
+
+# run the following command to activate the changes to groups:
+newgrp docker
+
+# Verify that you can run docker commands without sudo.
+docker run hello-world
+```
+
+##### Create a Docker Compose file for MySQL:
+- Create a file named `docker-compose.yml` in your project directory with the following content:
+
+```yaml
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0      # Use the official MySQL 8.0 image
+    container_name: mysql_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword               # Root user's password (change for production)
+      MYSQL_DATABASE: crud_operations                     # Database name
+      MYSQL_USER: myuser                           # Regular user
+      MYSQL_PASSWORD: mypassword                    # Password for `MYSQL_USER`
+    ports:
+      - "3306:3306"                                   # Expose MySQL on port 3306
+    volumes:
+      - db_data:/var/lib/mysql                        # Persist data in a Docker volume
+    networks:
+      - todo_network
+
+volumes:                                              # Define volume for data persistence
+  db_data:
+
+networks:                                             # Define custom network
+  todo_network:
+
+```
+
+#### Start the MySQL container:
+```bash
+# Navigate to the directory where your docker-compose.yml file is located:
+cd z-mysql-with-docker-compose/
+
+# Start the MySQL container using Docker Compose:
+docker-compose up -d
+# The -d flag runs the container in detached mode (in the background).
+# To check the status of the container, run:
+docker ps
+# To stop the container, run:
+docker-compose down
+# To remove the container and its associated volumes, run:
+docker-compose down -v
+
+```
+#### Connect to the MySQL container:
+```bash
+# To connect to the MySQL container, run:
+docker exec -it mysql_container mysql -u root -p
+# Enter the root password you set in the docker-compose.yml file.
+# You can also connect using the regular user:
+docker exec -it mysql_container mysql -u myuser -p
+# Enter the password for `myuser` when prompted.
+# To access the MySQL shell, run:
+docker exec -it mysql_container mysql -u root -p
+# Enter the root password you set in the docker-compose.yml file.
+# You can also connect using the regular user:
+
+```
+
+- `Now you can use the MySQL with you Node Application:`
+
+---
+
+
+
+### 11. RDS connectivity 📦
 
 - Ensure your `MySQL database is accessible` from your EC2 instance (especially if using AWS RDS).
-## Mysql Client Install :
+
+### Mysql Client Install :
   ```bash
   sudo apt update
   sudo apt install mysql-client -y
@@ -185,7 +306,7 @@ pm2 save
 
 ## To edit the data in your users table in MySQL, you can use the UPDATE statement.
 For example, if you want to update the name or email for the user with id = 1, use this:
-  
+
  UPDATE users
  SET name = 'Amir H.', email = 'amir.h@example.com'
  WHERE id = 1;
@@ -198,6 +319,8 @@ For example, if you want to update the name or email for the user with id = 1, u
 npm run build
 # one dist folder will be created in frontend directory
 ```
+
+
 
 # Contributing 🤝
 ### Feel free to contribute or report issues to improve this setup guide!
