@@ -152,7 +152,10 @@ pm2 startup
 pm2 save
 ```
 
-### 10. Run MySQL Database Locally (with docker compose file) 🗄️
+### 10. Run `MySQL` Database Locally along with `PHPMyAdmin` (with docker compose file) 🗄️
+
+<img src="./zimages/mysql-phpmyadmin-docker-compose.png" alt="MERN Stack" width="100%" height="100%">
+
 - Requirements:
   - Docker and Docker Compose installed on your server.
   - Docker installed on your local machine (if running locally).
@@ -227,6 +230,21 @@ services:
     networks:
       - todo_network
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest                 # Use the latest phpMyAdmin image
+    container_name: phpmyadmin_container                # Name the phpMyAdmin container
+    restart: always                                     # Restart the container automatically if it crashes
+    environment:
+      PMA_HOST: mysql                                   # Hostname of the MySQL server (matches the `mysql` service)
+      PMA_USER: root                                    # MySQL root user for phpMyAdmin
+      PMA_PASSWORD: rootpassword                       # Password for the MySQL root user
+    ports:
+      - "8085:80"                                       # Expose phpMyAdmin on port 8085
+    depends_on:
+      - mysql                                           # Ensure that the MySQL container starts before phpMyAdmin
+    networks:
+      - todo_network
+
 volumes:                                              # Define volume for data persistence
   db_data:
 
@@ -251,20 +269,9 @@ docker-compose down
 docker-compose down -v
 
 ```
-#### Connect to the MySQL container:
-```bash
-# To connect to the MySQL container, run:
-docker exec -it mysql_container mysql -u root -p
-# Enter the root password you set in the docker-compose.yml file.
-# You can also connect using the regular user:
-docker exec -it mysql_container mysql -u myuser -p
-# Enter the password for `myuser` when prompted.
-# To access the MySQL shell, run:
-docker exec -it mysql_container mysql -u root -p
-# Enter the root password you set in the docker-compose.yml file.
-# You can also connect using the regular user:
+#### Explore MySQL Server with PHPMyAdmin:
+- Open your web browser and navigate to `http://your-server-ip:8085` to access phpMyAdmin.
 
-```
 
 - `Now you can use the MySQL with you Node Application:`
 
