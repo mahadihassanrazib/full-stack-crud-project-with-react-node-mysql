@@ -7,8 +7,8 @@ const router = require('./routes/DBOperRoutes');
 const bodyParser = require('body-parser');
 const cors = require("cors")
 dotenv.config();
-//using the port in environmental variable or 5000
-const port = process.env.PORT || 5000;
+//using the port in environmental variable or 3000
+const port = process.env.PORT || 3000;
 
 // middleware to parse incoming request in bodies
 app.use(express.json());

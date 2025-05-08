@@ -1,0 +1,8 @@
+#h1, #h3 {
+    text-align: center;
+}
+
+#button {
+    display: block !important;
+    margin: 2rem auto !important;
+}

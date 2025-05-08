@@ -10,7 +10,18 @@
 
 You can deploy this app on any Linux Server , especially AWS EC2 instance , along with a MySQL database (e.g., AWS RDS).
 
-## ✅ Prerequisites
+###  If you want to run this MERN Stack app locally, you can use `Docker and Docker compose` to run Frontend, Backend, MySQL and PHPMyAdmin.
+
+## 🐋 Prerequisite for running with Docker:
+  - Just Jump to `10. Run MySQL Database Locally along with PHPMyAdmin (with docker compose file)` section of this `README` and install Docker.
+  - Then cd into `run_mern_stack_with_docker_compose` folder and add you machine IP under `environment` of `frontend` on  `docker-compose.yml`
+      - VITE_API_URL=http://`<Your Machine IP>`:3000
+  - Then Run the `docker-compose up` command to run the whole stack.
+  - Now you can access the app on your local machine at `http://localhost:5000`
+  - Access Backend API at `http://localhost:3000` and PHPMyAdmin at `http://localhost:8085`.
+  - You can also run the `docker-compose down` command to stop the whole stack.
+
+## ✅ Prerequisites for running on Linux Server:
 Before proceeding, ensure the following are available:
 
 - A `Linux server` (e.g., Ubuntu on AWS EC2)
