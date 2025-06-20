@@ -1,5 +1,5 @@
 # Three-Tier MERN Application with React.js, Node.js & MySQL
-
+# hello everyone, this is a complete three-tier web application built using the MERN stack (MongoDB, Express.js, React.js, Node.js) with MySQL as the database. This project is designed to help you understand how to build a full-stack application with a focus on CRUD operations.
 <img src="./zimages/mern.jpg" alt="MERN Stack" width="100%" height="100%">
 
 ## This repository contains a complete three-tier web application built using:
