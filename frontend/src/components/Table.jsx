@@ -12,7 +12,7 @@ function Table() {
   const [users, setUsers] = useState([]);
   const hasFetchedUsers = useRef(false);
 
-  //async await useEffect function for fetching data from server
+  //async await useEffect function for fetching data from server hello
   useEffect(() => {
 
     if (!import.meta.env.VITE_API_URL) {
