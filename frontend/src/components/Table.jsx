@@ -35,7 +35,7 @@ function Table() {
       } catch (error) {
         console.log("There was an error fetching the users!", error);
 
-        //if we haven't fetched it stay as it is
+        //if we haven't fetched it stay as it is test
         if (!hasFetchedUsers.current) {
           toast.error("Error Fetching Data");
           hasFetchedUsers.current = true; // set the ref to true after first fetch attempt
