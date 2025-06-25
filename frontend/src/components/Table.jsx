@@ -58,7 +58,7 @@ function Table() {
       <Toaster richColors closeButton />
       <div className="container mt-5">
         <h1 className="mb-4" id="h1">
-          Chaynika's Table 
+          User Table 
         </h1>
         <CreateUserModal addUser={addUser} />
         <EditUserModal />
