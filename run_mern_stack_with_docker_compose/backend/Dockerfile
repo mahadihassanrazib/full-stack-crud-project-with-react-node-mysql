@@ -39,4 +39,4 @@ ENV DB_CONNECTIONLIMIT=$DB_CONNECTIONLIMIT
 ENV DB_QUEUELIMIT=$DB_QUEUELIMIT
 
 # Command to start the Node.js server
-CMD ["npm", "start"]
+CMD ["npm", "start", "--host", "0.0.0.0"]
