@@ -28,7 +28,7 @@ let pool;
     });
 
     // use the router
-    app.use("/api", router);
+    app.use("/", router);
 
     // start the server
     app.listen(3000, '0.0.0.0', () => {
